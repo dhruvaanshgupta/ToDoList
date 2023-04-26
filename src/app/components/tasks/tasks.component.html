@@ -1,0 +1,69 @@
+<div
+  class="container-fluid bg-grey"
+  style="height: 100%; margin-bottom: 250px; padding-top: 50px; "
+>
+  <div class="container bg-grey">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col-md-6 bg-white shadow">
+        <div class="card bg-dark mt-4 d-flex">
+          <h4 class="text-white p-3 pt-2 pb-2">
+            To-Do List<button
+              class="btn btn-outline-success"
+              (click)="toggleHide()"
+              style="margin-left: 450px"
+              type="button"
+            >
+              +
+            </button>
+          </h4>
+        </div>
+
+        <div *ngIf="!isHidden" class="shadow">
+          <div class="input-group p-4">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="I need to... "
+              name="task"
+              [(ngModel)]="addTaskValue"
+            />
+            <button
+              class="btn btn-outline-success"
+              type="button"
+              (click)="addTask()"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+
+        <h4 class="text-dark m-4">All Tasks:</h4>
+        <h5 class="m-4" style="color: grey; font-weight: 400">
+          You've got {{ totalTask() }} tasks.
+        </h5>
+
+        <div style="overflow-y: auto; height: 350px">
+          <div class="m-3" *ngFor="let task of taskList">
+            <div class="p-2 shadow border" id="tasks" [ngClass]="{'completed-task': !task.status}">
+              <div class="input-group row ps-3">
+                <div class="card col-md-10 border-0">{{ task.task }}</div>
+                <button
+                  class="btn btn-outline-primary col me-2"
+                  data-bs-toggle="modal"
+                  type="button"
+                  data-bs-target="#exampleModal"
+                  (click)="updateTask(task)"
+                >
+                  <i class="fa-solid fa-check" style="color: #2d1da5;"></i>
+                </button>
+                <div class="btn btn-outline-danger col" (click)="deleteTask(task)"><i class="fa-solid fa-trash" style="color: #dd3c3f;"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
+  </div>
+</div>

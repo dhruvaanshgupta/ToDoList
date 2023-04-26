@@ -1,0 +1,22 @@
+#tasks:hover {
+    transform: scale(1.01);
+}
+.card.bg-warning {
+  background-color: black;
+}
+
+.text-primary {
+  color: black;
+}
+
+.container-fluid.bg-grey {
+  background-color: rgb(245, 239, 239);
+}
+
+.container.bg-grey {
+  background-color:rgb(245, 239, 239);
+}
+.completed-task {
+  text-decoration: line-through;
+  color: lightgrey;
+}

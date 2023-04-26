@@ -1,0 +1,45 @@
+
+
+ul li {
+    list-style: none;
+    font-size: 20px;
+    padding-top: 9px;
+  }
+
+mat-toolbar{
+  background-color: black;
+  color: white;
+}
+a {
+  all: unset;
+}
+
+.nav-buttons{
+    display: flex;
+    flex-direction: row;
+
+        .ul-list{
+            display: flex;
+            flex-direction: row;
+            gap: 80px;
+            margin-left: 1380px;
+
+            
+        }
+}
+button{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+   
+}
+
+span{
+  margin-left: 14px;
+  font-size: 22px;
+}
+

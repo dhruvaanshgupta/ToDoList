@@ -1,0 +1,28 @@
+<ng-container>
+<mat-toolbar color="">
+    <mat-toolbar-row>
+  <i class="fa-solid fa-arrows-to-eye" style="color: #fcfcfc; font-size: 30px;"></i><span> Task Master</span>
+  <div class="nav-buttons">
+        <ul class="ul-list">
+          <li class="items">
+            <a routerLink=""><button mat-icon-button>
+              All Tasks
+            </button></a>
+            
+          </li>
+          <li>
+            <a routerLink="/activeTasks"><button mat-icon-button>
+              Active Tasks
+            </button></a>
+            
+          </li>
+          <li>
+            <a routerLink="/inactiveTasks"><button mat-icon-button>
+              Inactive Tasks
+            </button></a>
+          </li>
+        </ul>
+      </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+</ng-container>
