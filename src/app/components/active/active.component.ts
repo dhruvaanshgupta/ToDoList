@@ -10,35 +10,42 @@ import { TaskServiceService } from 'src/app/services/task-service.service';
 export class ActiveComponent implements OnInit {
   taskList: Task[] = [];
   activeTaskList: Task[] = [];
-  
 
   constructor(private taskService: TaskServiceService) {}
 
   ngOnInit(): void {
+    this.taskList = [];
     this.getActiveTask();
   }
 
   totalActiveTask() {
     return this.taskList.length;
-   }
-  
-  isActive(newTaskList : Task[]) {
-    for (let task of newTaskList) {
-      if (task.status === true) {
-        this.activeTaskList.push(task);
-      }
-      newTaskList = this.activeTaskList;
-      
-    }
-    return newTaskList;
   }
 
 
-  getActiveTask() {
+  isActive(task: Task) {
+    if (task.status === true) {
+      return task;
+    } else {
+      return;
+    }
+  }
+
+  updateTask(newTask: Task) {
+    this.taskService.updateStatus(newTask).subscribe(
+      (res) => {
+        this.ngOnInit();
+      },
+      (err) => {
+        alert('Failed to update status');
+      }
+    );
+  }
+
+   getActiveTask() {
     this.taskService.getAllTask().subscribe(
       (res) => {
-        this.taskList = res;
-        this.taskList = this.isActive(this.taskList);
+        this.taskList = res.filter(res=>this.isActive(res));
       },
       (err) => {
         alert(err);

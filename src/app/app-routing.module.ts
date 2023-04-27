@@ -12,11 +12,11 @@ const routes: Routes = [
         component: TasksComponent,
       },
       {
-        path: 'inactiveTasks',
+        path: 'inactivetasks',
         component: InactiveComponent,
       },
       {
-        path: 'activeTasks',
+        path: 'activetasks',
         component: ActiveComponent,
       },
    

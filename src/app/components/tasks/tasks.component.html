@@ -1,13 +1,13 @@
 <div
   class="container-fluid bg-grey"
-  style="height: 100%; margin-bottom: 250px; padding-top: 50px; "
+  style="height: 114.5vh; padding-top: 50px; "
 >
   <div class="container bg-grey">
     <div class="row">
       <div class="col"></div>
       <div class="col-md-6 bg-white shadow">
         <div class="card bg-dark mt-4 d-flex">
-          <h4 class="text-white p-3 pt-2 pb-2">
+          <h4 class="text-white p-3 pt-2 pb-2" style="margin-top: 8px;">
             To-Do List<button
               class="btn btn-outline-success"
               (click)="toggleHide()"
@@ -47,7 +47,7 @@
           <div class="m-3" *ngFor="let task of taskList">
             <div class="p-2 shadow border" id="tasks" [ngClass]="{'completed-task': !task.status}">
               <div class="input-group row ps-3">
-                <div class="card col-md-10 border-0">{{ task.task }}</div>
+                <div class="card col-md-10 border-0" style="padding-top: 4px; font-size: 20px;">{{ task.task }}</div>
                 <button
                   class="btn btn-outline-primary col me-2"
                   data-bs-toggle="modal"

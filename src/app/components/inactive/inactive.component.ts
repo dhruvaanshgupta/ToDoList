@@ -21,21 +21,18 @@ export class InactiveComponent {
     return this.taskList.length;
   }
 
-  isInActive(newTaskList: Task[]) {
-    for (let task of newTaskList) {
-      if (task.status === false) {
-        this.inactiveTaskList.push(task);
-      }
-      newTaskList = this.inactiveTaskList;
+  isInActive(task: Task) {
+    if (task.status === false) {
+      return task;
+    } else {
+      return;
     }
-    return newTaskList;
   }
 
   getInActiveTask() {
     this.taskService.getAllTask().subscribe(
       (res) => {
-        this.taskList = res;
-        this.taskList = this.isInActive(this.taskList);
+        this.taskList = res.filter(res=>this.isInActive(res));
       },
       (err) => {
         alert(err);

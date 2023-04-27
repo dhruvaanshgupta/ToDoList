@@ -1,29 +1,29 @@
 <div
   class="container-fluid bg-grey"
-  style="height: 100%; margin-bottom: 250px; padding-top: 50px;"
+  style="height: 114.5vh; padding-top: 50px; "
 >
   <div class="container bg-grey">
     <div class="row">
       <div class="col"></div>
       <div class="col-md-6 bg-white shadow">
         <div class="card bg-dark mt-4 d-flex">
-          <h4 class="text-white p-3 pt-2 pb-2">
+          <h4 class="text-white p-3 pt-2 pb-2" style="margin-top: 8px;">
             To-Do List
           </h4>
         </div>
 
         
 
-        <h4 class="text-dark m-4">Inactive Tasks:</h4>
+        <h4 class="text-dark m-4">Completed Tasks:</h4>
         <h5 class="m-4" style="color: grey; font-weight: 400">
-          You've got {{ totalInActiveTask() }} inactive tasks.
+          You've completed {{ totalInActiveTask() }} tasks.
         </h5>
 
         <div style="overflow-y: auto; height: 350px">
           <div class="m-3" *ngFor="let task of taskList; ">
             <div class="p-2 shadow border" id="tasks">
               <div class="input-group row ps-3">
-                <div class="card col-md-10 border-0">{{ task.task }}</div>
+                <div class="card col-md-10 border-0" style="padding-top: 4px; font-size: 20px;">{{ task.task }}</div>
               </div> 
             </div>
           </div>
