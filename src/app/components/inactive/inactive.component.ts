@@ -14,6 +14,7 @@ export class InactiveComponent {
   constructor(private taskService: TaskServiceService) {}
 
   ngOnInit(): void {
+    
     this.getInActiveTask();
   }
 

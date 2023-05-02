@@ -5,8 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './components/header/header.component';
-import { ActiveComponent } from './components/active/active.component';
-import { InactiveComponent } from './components/inactive/inactive.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
@@ -24,8 +22,6 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     DashboardComponent,
     HeaderComponent,
-    ActiveComponent,
-    InactiveComponent,
     FooterComponent,
     TasksComponent,
   ],

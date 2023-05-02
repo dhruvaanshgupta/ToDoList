@@ -22,7 +22,6 @@ export class ActiveComponent implements OnInit {
     return this.taskList.length;
   }
 
-
   isActive(task: Task) {
     if (task.status === true) {
       return task;
@@ -42,10 +41,10 @@ export class ActiveComponent implements OnInit {
     );
   }
 
-   getActiveTask() {
+  getActiveTask() {
     this.taskService.getAllTask().subscribe(
       (res) => {
-        this.taskList = res.filter(res=>this.isActive(res));
+        this.taskList = res.filter((res) => this.isActive(res));
       },
       (err) => {
         alert(err);

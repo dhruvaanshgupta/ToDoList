@@ -13,8 +13,6 @@ export class TaskServiceService {
     this.url = 'http://localhost:8000/';
   }
 
-  
-
   addTask(task: Task): Observable<Task> {
     return this.http.post<Task>(this.url + 'add', task);
   }
