@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -35,6 +35,7 @@ import { FormsModule } from '@angular/forms';
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
+    MatProgressSpinnerModule,
   ],
   providers: [TaskServiceService],
   bootstrap: [AppComponent],

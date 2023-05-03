@@ -44,6 +44,8 @@
         </h5>
 
         <div style="overflow-y: auto; height: 350px">
+          <mat-spinner style="position: relative;left: 260px; top: 70px;" *ngIf="loading"></mat-spinner>
+          <div *ngIf="!loading">
           <div class="m-3" *ngFor="let task of taskList ">
             <div class="p-2 shadow border" id="tasks" [ngClass]="{'completed-task': !task.status}">
               <div class="input-group row ps-3">
@@ -58,6 +60,7 @@
                   <i class="fa-solid fa-check" style="color: #2d1da5;"></i>
                 </button>
                 <div class="btn btn-outline-danger col" (click)="deleteTask(task)"><i class="fa-solid fa-trash" style="color: #dd3c3f;"></i></div>
+              </div>
               </div>
             </div>
           </div>
