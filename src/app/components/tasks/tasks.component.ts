@@ -29,50 +29,21 @@ export class TasksComponent implements OnInit {
     private taskService: TaskServiceService,
     private taskQuery: TaskQuery,
     private taskStore: TaskStore
-  ) {}
+  ) { }
+  
   ngOnInit(): void {
+    this.taskStore.setLoading(true);
     this.taskList = [];
-    this.getTaskList();
-  }
+    this.taskQuery.getTasks().subscribe((res) => {
+      this.taskList = res;
 
-  getTaskList() {
-    this.taskQuery.getIsLoading().subscribe((res) => (this.loading = res));
-    this.taskQuery.getTasks().subscribe((res) => (this.taskList = res));
-    this.taskQuery
-      .getLoaded()
-      .pipe(
-        take(1),
-        filter((res) => !res),
-        switchMap(() => {
-          this.taskStore.setLoading(true);
-          return this.taskService.getAllTask();
-        })
-      )
-      .subscribe(
-        (res) => {
-          this.taskStore.update((state) => {
-            return {
-              tasks: res,
-              isLoaded: true,
-            };
-          });
-
-          this.taskStore.setLoading(false);
-        },
-        (err) => {
-          console.log(err);
-          this.taskStore.setLoading(false);
-        }
-      );
-
-    // this.taskService.getAllTask().subscribe(
-    //   (res) => {
-    //     this.taskList = res;
-    //   },
-    //   (err) => {
-    //     alert('Unable to get list of tasks!');
-    //   }
-    // );
+      this.taskStore.update((state) => {
+        return {
+          tasks: res,
+          isLoaded: true,
+        };
+      });
+    });
   }
 
   addTask() {
@@ -124,12 +95,12 @@ export class TasksComponent implements OnInit {
   deleteTask(newTask: Task) {
     this.taskService.deleteTask(newTask).subscribe(
       (res) => {
-        this.taskStore.update((state) => { 
+        this.taskStore.update((state) => {
           return {
             ...state,
-            tasks: state.tasks.filter((t) => t._id!== newTask._id),
-          }
-        })
+            tasks: state.tasks.filter((t) => t._id !== newTask._id),
+          };
+        });
       },
       (err) => {
         alert('Failed to delete task.' + err);

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Task } from 'src/app/interfaces/task';
 import { TaskServiceService } from 'src/app/services/task-service.service';
+import { TaskQuery } from 'src/app/state/query';
+import { TaskStore } from 'src/app/state/store';
 
 @Component({
   selector: 'app-inactive',
@@ -11,7 +13,8 @@ export class InactiveComponent {
   taskList: Task[] = [];
   inactiveTaskList: Task[] = [];
 
-  constructor(private taskService: TaskServiceService) {}
+  constructor(private taskService: TaskServiceService,
+  private taskQuery : TaskQuery, private taskStore: TaskStore) { }
 
   ngOnInit(): void {
     
@@ -30,10 +33,16 @@ export class InactiveComponent {
     }
   }
 
-  getInActiveTask() {
-    this.taskService.getAllTask().subscribe(
+  getInActiveTask()  {
+    this.taskQuery.getTasks().subscribe(
       (res) => {
-        this.taskList = res.filter(res=>this.isInActive(res));
+        this.taskList = res.filter((res) => this.isInActive(res));
+        this.taskStore.update((state) => {
+          return {
+            tasks: res,
+            isLoaded: true,
+          };
+        });
       },
       (err) => {
         alert(err);
